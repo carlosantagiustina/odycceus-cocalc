@@ -1,4 +1,4 @@
-#Development version
+#Latest (release) version
 FROM carlosantagiustina/cocalc
 MAINTAINER Carlo R. M. A. Santagiustina (carlosantagiustina@gmail.com)
 ENV DEBIAN_FRONTEND noninteractive
@@ -14,10 +14,6 @@ RUN \
     curl https://dbeaver.io/debs/dbeaver.gpg.key | gpg --dearmor > /etc/apt/trusted.gpg.d/dbeaver.gpg; \
     echo "deb https://dbeaver.io/debs/dbeaver-ce /" > /etc/apt/sources.list.d/dbeaver.list
 
-# Update everything
-# RUN apt-get update;
-RUN apt-get -y install apt-transport-https; apt-get -y dist-upgrade
-#RUN rm -rf /var/lib/apt/lists/*
 
 # Install additional software
 # RUN apt-get update
@@ -39,6 +35,3 @@ RUN export PATH=/opt/conda/bin:$PATH
     
 #Re-start CoCalc
 #CMD /root/run.py
-
-#EXPOSE 80 443
-
