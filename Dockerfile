@@ -19,7 +19,7 @@ RUN apt-get update;apt-get -y install apt-transport-https; apt-get -y dist-upgra
 # Install additional software
 RUN apt-get update; \
     apt-get -y install \
-        codium dbeaver-ce emacs gimp \
+        vscodium dbeaver-ce emacs gimp \
         scilab geogebra sqlitebrowser mysql-workbench \
         gmysqlcc default-jdk nano
 
