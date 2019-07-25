@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 
 # Install additional software
-# RUN apt-get update
+ RUN apt-get update --fix-missing
     
 RUN \
     apt-get -y install \
