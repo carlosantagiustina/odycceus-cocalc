@@ -1,4 +1,4 @@
-FROM sagemathinc/cocalc
+FROM carlosantagiustina/cocalc
 MAINTAINER Carlo R. M. A. Santagiustina (carlosantagiustina@gmail.com)
 ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 0.01
