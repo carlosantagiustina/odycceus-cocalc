@@ -33,7 +33,7 @@ RUN \
     
 RUN export PATH=/opt/conda/bin:$PATH
 
-DEBIAN_FRONTEND=newt 
+ENV DEBIAN_FRONTEND=newt 
 #Re-start CoCalc
 #CMD /root/run.py
 
