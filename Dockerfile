@@ -34,8 +34,15 @@ FROM continuumio/anaconda3 AS anaconda
     
 # RUN export PATH=/opt/conda/bin:$PATH
  
+#Add Conda kernel to Jupyter
+RUN source activate sympy && \
+    python -m ipykernel install --prefix=/usr/local/ --name "python3"&& \
+    source deactivate 
+    
+    
+    
 ENV DEBIAN_FRONTEND=newt 
+
 
 #Re-start CoCalc
 #CMD /root/run.py
-
