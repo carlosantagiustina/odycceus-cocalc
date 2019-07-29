@@ -25,8 +25,6 @@ RUN \
 #Install Anaconda from container  continuumio/anaconda3 https://hub.docker.com/r/continuumio/anaconda3/dockerfile
 #FROM continuumio/anaconda3 AS anaconda
 
-ENV PATH /opt/conda/bin:$PATH
-
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
@@ -44,6 +42,7 @@ RUN apt-get install -y curl grep sed dpkg && \
     dpkg -i tini.deb && \
     rm tini.deb
 
+RUN export PATH=/opt/conda/bin:$PATH
 
 #Install Miniconda manually
 #echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
