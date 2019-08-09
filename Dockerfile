@@ -54,11 +54,7 @@ RUN export PATH=/opt/conda/bin:$PATH
 # RUN export PATH=/opt/conda/bin:$PATH
  
 #Add Conda kernel to Jupyter
-RUN source activate sympy && \
-    python -m ipykernel install --prefix=/usr/local/ --name "python3"&& \
-    source deactivate 
-    
-    
+RUN  python -m ipykernel install --prefix=/usr/local/ --name "python3" 
     
 ENV DEBIAN_FRONTEND=newt 
 
