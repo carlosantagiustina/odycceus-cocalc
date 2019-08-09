@@ -1,4 +1,5 @@
-#Latest (release) version
+#Development (may not be stable)
+#version
 FROM carlosantagiustina/cocalc AS cleanCocalc
 MAINTAINER Carlo R. M. A. Santagiustina (carlosantagiustina@gmail.com)
 ENV DEBIAN_FRONTEND noninteractive
