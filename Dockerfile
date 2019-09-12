@@ -235,6 +235,10 @@ RUN \
     R -e 'update.packages(lib.loc = "/usr/lib/R/library", ask = FALSE, checkBuilt = TRUE)'
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
+ RUN \ 
+ R -e 'remove.packages("digest")'
+ RUN \ 
+    R -e 'install.packages(c("digest"),lib="/usr/lib/R/library")'
 RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
 
