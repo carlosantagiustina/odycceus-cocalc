@@ -204,7 +204,7 @@ RUN apt-get update \
     libcurl3 
   
 
-  && cd tmp/ \
+RUN cd tmp/ \
   ## Download source code
   && curl -O https://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz \
   ## Extract source code
