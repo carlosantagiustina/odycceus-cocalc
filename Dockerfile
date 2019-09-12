@@ -236,7 +236,9 @@ RUN \
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
  RUN \ 
- R -e 'remove.packages("digest","processx")'
+ R -e 'remove.packages("digest")'
+  RUN \ 
+ R -e 'remove.packages("processx")'
  RUN \ 
     R -e 'install.packages(c("digest","processx"),lib="/usr/lib/R/library")'
 RUN \ 
