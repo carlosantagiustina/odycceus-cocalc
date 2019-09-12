@@ -184,15 +184,16 @@ RUN apt-get update && apt-get install -yq libtool pkg-config autoconf zlib1g-dev
 ####################################
 
 RUN \ 
-    add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-
-RUN \ 
     gpg --keyserver pgpkeys.mit.edu --recv-key 51716619E084DAB9  
 
 RUN \ 
     gpg -a --export 51716619E084DAB9 | sudo apt-key add -
+RUN \ 
+gpg --keyserver subkeys.pgp.net --recv-key 381BA480 
 
 
+RUN \ 
+    add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 
 RUN \ 
     apt update
