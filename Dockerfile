@@ -220,8 +220,8 @@ RUN apt-get update \
         r-base-dev=${R_BASE_VERSION}* \
         r-recommended=${R_BASE_VERSION}*
         
-#update rlang and other R packages
-
+#update R packages and remove old library
+RUN \  rm -r /usr/local/lib/R/site-library
 RUN \ 
     R -e '.libPaths("/usr/lib/R/library")'
 RUN \ 
