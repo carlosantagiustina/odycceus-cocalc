@@ -225,7 +225,7 @@ RUN  rm -r /usr/local/lib/R/site-library
 RUN \ 
     R -e '.libPaths("/usr/lib/R/library")'
 RUN \ 
-    R -e 'install.packages(c("rlang","devtools","digest","glue"),lib="/usr/lib/R/library")'
+    R -e 'install.packages(c("rlang","rversions","roxygen2","devtools","digest","glue"),lib="/usr/lib/R/library")'
 RUN \ 
     R -e 'install.packages(c("Rcpp","htmltools"),lib="/usr/lib/R/library")'
     
