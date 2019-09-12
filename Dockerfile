@@ -42,6 +42,7 @@ RUN \
         make \
         libzmq3-dev \
         libczmq-dev \
+         wget \
         software-properties-common
 #        ruby \
 #        ruby-dev \        
