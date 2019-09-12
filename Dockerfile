@@ -225,18 +225,16 @@ RUN apt-get update \
 RUN \ 
     R -e '.libPaths("/usr/lib/R/library")'
 RUN \ 
-    R -e 'install.packages(c("rlang","digest","glue"),lib="/usr/lib/R/library")'
+    R -e 'install.packages(c("rlang","devtools","digest","glue"),lib="/usr/lib/R/library")'
 RUN \ 
     R -e 'install.packages(c("Rcpp","htmltools"),lib="/usr/lib/R/library")'
+    
+RUN  apt-get install -y  --no-install-recommends  \
+        libxml2-dev  libpoppler-cpp-dev  libgdal-dev libproj-dev gdal-bin
 RUN \ 
     R -e 'update.packages(lib.loc = "/usr/lib/R/library", ask = FALSE, checkBuilt = TRUE)'
 RUN \ 
-    R -e 'install.packages(c("ps","processx","fs","usethis"),lib="/usr/lib/R/library")'
-RUN \ 
-    R -e 'update.packages(lib.loc = "/usr/lib/R/library", ask = FALSE, checkBuilt = TRUE)'
-
-RUN \ 
-    R -e 'install.packages(c("devtools"),lib="/usr/lib/R/library")'
+    R -e 'install.packages(c("ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
 RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
 
