@@ -202,46 +202,20 @@ RUN apt-get update \
     libblas-dev \
     libbz2-1.0 \
     libcurl4\
-    curl \
-    libx11-dev
+    curl 
+#    libx11-dev
   
+ENV R_BASE_VERSION 3.6.1
 
-RUN cd tmp/ \
-  ## Download source code
-  && curl -O https://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz \
-  ## Extract source code
-  && tar -xf R-${R_VERSION}.tar.gz \
-  && cd R-${R_VERSION} \
-  ## Set compiler flags
-  && R_PAPERSIZE=letter \
-    R_BATCHSAVE="--no-save --no-restore" \
-    R_BROWSER=xdg-open \
-    PAGER=/usr/bin/pager \
-    PERL=/usr/bin/perl \
-    R_UNZIPCMD=/usr/bin/unzip \
-    R_ZIPCMD=/usr/bin/zip \
-    R_PRINTCMD=/usr/bin/lpr \
-    LIBnn=lib \
-    AWK=/usr/bin/awk \
-    CFLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g" \
-    CXXFLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g" \
-  ## Configure options
-  ./configure --enable-R-shlib \
-               --enable-memory-profiling \
-               --with-readline \
-               --with-blas \
-               --with-tcltk \
-               --disable-nls \
-               --with-recommended-packages \
-               --with-x=no \
-  ## Build and install
-  && make \
-  && make install \
-  ## Add a default CRAN mirror
-  && echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site \
-  ## Add a library directory (for user-installed packages)
-
-
+## Now install R and littler, and create a link for littler in /usr/local/bin
+## Also set a default CRAN repo, and make sure littler knows about it too
+RUN apt-get update \
+    && apt-get install -t unstable -y --no-install-recommends \
+        littler \
+                r-cran-littler \
+        r-base=${R_BASE_VERSION}* \
+        r-base-dev=${R_BASE_VERSION}* \
+        r-recommended=${R_BASE_VERSION}* \
 #update rlang and other R packages
 
 RUN \ 
