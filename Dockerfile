@@ -11,12 +11,16 @@ ENV DEBIAN_FRONTEND noninteractive
 
 
 
+#repostiries 
+RUN \ wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+RUN \ sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+
 # Install additional software
  RUN apt-get update --fix-missing
 
 #Install ubuntu libraries
 RUN \
-    apt-get -y install \
+    apt-get install -y  --no-install-recommends  \
         emacs \
         gimp \
         scilab \
@@ -29,18 +33,110 @@ RUN \
         apt-transport-https \
         software-properties-common \
         sbcl \
-        ruby-full \
+        unrar \
+        idle3 \
+        firefox \
+        atom \
+        libtool \
+        libffi-dev \
+        make \
+        libzmq3-dev \
+        libczmq-dev \
+        software-properties-common
+#        ruby \
+#        ruby-dev \        
 
-######################################################################################################################
-####################################
-###########    Julia     ###########
-####################################
+RUN octave --eval 'pkg install -forge dataframe'
+################################
+#########   Chrome     #########
+################################
+
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt-get update 
+sudo apt-get install google-chrome-stable
+
+################################
+#########   Python     #########
+################################
+#install python3 minimal IDE
+
+
+
+#text mining tools
+RUN \ 
+python3 -m pip install tensorflow
+RUN \ 
+python3 -m pip install keras
 RUN \
-echo '\
-ENV["JUPYTER"] = "/usr/local/bin/jupyter"; \
-ENV["JULIA_PKGDIR"] = "/opt/julia/share/julia/site"; \
-Pkg.init(); \
-Pkg.add("IJulia");' | julia 
+python3 -m pip install spacy
+RUN \
+python3  -m spacy download it_core_news_sm
+RUN \
+python3  -m spacy download de_core_news_sm
+RUN \
+python3  -m spacy download nl_core_news_sm
+RUN \
+python3  -m spacy download es_core_news_sm
+
+###############################
+### SoS : Script of Scripts ###
+###############################
+RUN \ 
+python3 -m pip install sos
+RUN \ 
+python3 -m pip install sos-pbs
+
+RUN \ 
+python3 -m pip install sos-notebook
+
+RUN \ 
+python3 -m sos_notebook.install
+
+#SoS languages
+RUN \ 
+python3 -m pip install sos-r
+RUN \ 
+python3 -m pip install sos-python
+pip3 install sos-javascript
+RUN \ 
+python3 -m pip install  sos-julia feather-format  
+RUN \ 
+python3 -m pip install  sos-matlab
+RUN \ 
+python3 -m pip install sos-ruby
+RUN \ 
+python3 -m pip install sos-xeus-cling
+#
+RUN \ 
+python3 -m pip install sos-essentials
+RUN \ 
+python3 -m pip install markdown-kernel
+RUN \ 
+python3 -m markdown_kernel.install
+
+RUN \ 
+python3 -m pip install bash_kernel
+RUN \ 
+python3 -m bash_kernel.install
+
+################
+### Ruby      ##
+################
+RUN apt-get update && apt-get install -yq libtool pkg-config autoconf zlib1g-dev libssl-dev && \
+    apt-get clean && cd ~ && \
+    git clone --depth=1 https://github.com/zeromq/libzmq && \
+    git clone --depth=1 https://github.com/zeromq/czmq && \
+    cd libzmq && ./autogen.sh && ./configure && make && make install && \
+    cd ../czmq && ./autogen.sh && ./configure && make && make install && \
+    cd .. && rm -rf ./libzmq ./czmq && \
+    wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.gz && tar xf ruby-2.4.1.tar.gz && cd ruby-2.4.1 && \
+    ./configure && make && make install && \
+    rm -rf ./ruby-2.4* && \
+    gem install cztop iruby rbplotly daru daru_plotly && \
+    rm -rf /var/lib/apt/lists/* && ldconfig
+
+# iruby register --force
 
 
 
@@ -94,6 +190,12 @@ RUN \
 
 RUN \ 
     gpg -a --export 51716619E084DAB9 | sudo apt-key add -
+    
+RUN \  
+add-apt-repository 'deb http://cran.stat.ucla.edu/bin/linux/ubuntu trusty/'
+RUN \ 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+
 
 RUN \ 
     apt update
@@ -103,6 +205,7 @@ RUN \
 
 RUN \ 
     apt install libxml2-dev
+
 
 
 #update rlang and other R packages
@@ -125,8 +228,6 @@ RUN \
 RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
 
-RUN \ 
-    R -e 'install.packages(c("tidyverse","pillar","quanteda", "tm","formatR", "RMarkdown"),lib="/usr/lib/R/library")'
 ######################################################################################################################
 ####################################
 ###########  RStudio     ###########
@@ -172,13 +273,71 @@ RUN \
 RUN \ 
       R -e 'keras::install_keras(method ="virtualenv", envname = "py3-virtualenv")'
 
+################
+### Julia     ##
+################
+# install Julia packages in /opt/julia instead of $HOME
+ENV JULIA_DEPOT_PATH=/opt/julia
+ENV JULIA_PKGDIR=/opt/julia
+ENV JULIA_VERSION=1.2.0
 
+RUN mkdir /opt/julia-${JULIA_VERSION} && \
+    cd /tmp && \
+    wget -q https://julialang-s3.julialang.org/bin/linux/x64/`echo ${JULIA_VERSION} | cut -d. -f 1,2`/julia-${JULIA_VERSION}-linux-x86_64.tar.gz && \
+    echo "926ced5dec5d726ed0d2919e849ff084a320882fb67ab048385849f9483afc47 *julia-${JULIA_VERSION}-linux-x86_64.tar.gz" | sha256sum -c - && \
+    tar xzf julia-${JULIA_VERSION}-linux-x86_64.tar.gz -C /opt/julia-${JULIA_VERSION} --strip-components=1 && \
+    rm /tmp/julia-${JULIA_VERSION}-linux-x86_64.tar.gz
+RUN ln -fs /opt/julia-*/bin/julia /usr/local/bin/julia
+
+RUN julia -e 'import Pkg; Pkg.update()' && \
+    (test $TEST_ONLY_BUILD || julia -e 'import Pkg; Pkg.add("HDF5")') && \
+    julia -e "using Pkg; pkg\"add IJulia\"; pkg\"precompile\"" 
+    
+#julia
+#using Pkg
+#using Pkg
+#Pkg.add("Feather")
+#Pkg.add("DataFrames")
+#Pkg.add("NamedArrays")
+#ENV["JUPYTER"] = "/usr/bin/jupyter"
+#Pkg.add("IJulia")
+
+  
 ######################################################################################################################
+
+
+########################
+#Kernels' permissions ##
+#######################
+
+RUN  cd /usr/share/jupyter/ && \
+chmod o+rx  -R kernels/ && \
+chmod u+rx -R kernels/ && \
+chmod g+rxw -R kernels/
+
+RUN cd /usr/local/share/jupyter/ && \
+chmod o+rxw  -R kernels/ && \
+chmod u+rxw -R kernels/ && \
+chmod g+rxw -R kernels/ 
+
+#############################################
+###permissions all libs (read and execute)###
+#############################################
+RUN cd /usr/local/ && \
+chmod g+rwx -R lib/ && \
+chmod o+rx -R lib/ && \
+chmod u+rx -R lib/
+
+
 ####################################
 #########  finalization  ###########
 ####################################
-ENV DEBIAN_FRONTEND=newt 
+
+ENV DEBIAN_FRONTEND=newt
+
+
 
 
 #Re-start CoCalc
 CMD /root/run.py
+
