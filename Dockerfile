@@ -215,7 +215,8 @@ RUN apt-get update \
                 r-cran-littler \
         r-base=${R_BASE_VERSION}* \
         r-base-dev=${R_BASE_VERSION}* \
-        r-recommended=${R_BASE_VERSION}* \
+        r-recommended=${R_BASE_VERSION}*
+        
 #update rlang and other R packages
 
 RUN \ 
