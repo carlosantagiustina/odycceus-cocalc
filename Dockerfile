@@ -100,8 +100,6 @@ python3 -m pip install sos-r
 RUN \ 
 python3 -m pip install sos-python
 RUN \ 
-python3 -m install sos-javascript
-RUN \ 
 python3 -m pip install  sos-julia feather-format  
 RUN \ 
 python3 -m pip install  sos-matlab
