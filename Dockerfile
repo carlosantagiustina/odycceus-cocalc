@@ -238,7 +238,7 @@ RUN \
  RUN \ 
  R -e 'remove.packages("digest")'
  RUN \ 
-    R -e 'install.packages(c("digest"),lib="/usr/lib/R/library")'
+    R -e 'install.packages(c("digest","processx"),lib="/usr/lib/R/library")'
 RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
 
