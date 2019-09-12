@@ -233,6 +233,7 @@ RUN cd tmp/ \
                --with-tcltk \
                --disable-nls \
                --with-recommended-packages \
+               --with-x=no \
   ## Build and install
   && make \
   && make install \
