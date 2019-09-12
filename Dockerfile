@@ -225,7 +225,7 @@ RUN apt-get update \
 RUN \ 
     R -e '.libPaths("/usr/lib/R/library")'
 RUN \ 
-    R -e 'install.packages(c("rlang","digest","glue"),lib="/usr/lib/R/library")'
+    R -e 'install.packages(c("rlang","digest","glue","htmltools"),lib="/usr/lib/R/library")'
 RUN \ 
     R -e 'install.packages(c("Rcpp"),lib="/usr/lib/R/library")'
 RUN \ 
