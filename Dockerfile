@@ -213,7 +213,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD5
 RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 
 RUN apt-get update \
-    && apt-get install -t  -y --no-install-recommends \
+    && apt-get install  -y --no-install-recommends \
         littler \
                 r-cran-littler \
         r-base=${R_BASE_VERSION}* \
