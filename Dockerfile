@@ -230,7 +230,7 @@ RUN \
     R -e 'install.packages(c("Rcpp","htmltools"),lib="/usr/lib/R/library")'
     
 RUN  apt-get install -y  --no-install-recommends  \
-        libxml2-dev  libpoppler-cpp-dev  libgdal-dev libproj-dev gdal-bin
+        libxml2-dev  libpoppler-cpp-dev  libgdal-dev libproj-dev gdal-bin libudunits2-dev
 RUN \ 
     R -e 'update.packages(lib.loc = "/usr/lib/R/library", ask = FALSE, checkBuilt = TRUE)'
 RUN \ 
