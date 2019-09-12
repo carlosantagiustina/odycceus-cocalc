@@ -201,7 +201,7 @@ RUN apt-get update \
     gsfonts \
     libblas-dev \
     libbz2-1.0 \
-    libcurl3 \
+    libcurl4\
     curl
   
 
