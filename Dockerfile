@@ -235,12 +235,7 @@ RUN \
     R -e 'update.packages(lib.loc = "/usr/lib/R/library", ask = FALSE, checkBuilt = TRUE)'
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
- RUN \ 
- R -e 'remove.packages("digest")'
-  RUN \ 
- R -e 'remove.packages("processx")'
- RUN \ 
-    R -e 'install.packages(c("digest","processx"),lib="/usr/lib/R/library")'
+
 RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
 
@@ -251,20 +246,19 @@ RUN \
 
 #install gdebi-core (for deb command)
 RUN \ 
-    apt install gdebi-core
+    apt install  -y --no-install-recommends gdebi-core
 
 #update Rstudio
-RUN \ 
-    cd /projects/tmp
-RUN \ 
-    wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1335-amd64.deb
-RUN \ 
-    mv rstudio-1.2.1335-amd64.deb rstudio.deb
-RUN \ 
-    dpkg -i rstudio.deb
-
-RUN \ 
-     apt --fix-broken install
+#RUN \ 
+#   cd /projects/tmp
+#RUN \ 
+#    wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1335-amd64.deb
+#RUN \ 
+#    mv rstudio-1.2.1335-amd64.deb rstudio.deb
+#RUN \ 
+#    dpkg -i rstudio.deb
+#RUN \ 
+#     apt --fix-broken install
 
 
 ######################################################################################################################
