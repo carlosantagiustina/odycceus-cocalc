@@ -202,7 +202,8 @@ RUN apt-get update \
     libblas-dev \
     libbz2-1.0 \
     libcurl4\
-    curl
+    curl \
+    libx11-dev
   
 
 RUN cd tmp/ \
