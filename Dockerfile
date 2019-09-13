@@ -43,7 +43,8 @@ RUN \
         libzmq3-dev \
         libczmq-dev \
          wget \
-        software-properties-common
+        software-properties-common \
+        python3-venv
 #        ruby \
 #        ruby-dev \        
 
