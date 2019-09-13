@@ -8,7 +8,7 @@ To build the more recent developer version of the container in your machine (onl
 sudo  docker build --force-rm  https://github.com/carlosantagiustina/odycceus-cocalc.git -t   carlosantagiustina/odycceus-cocalc:dev
 ```
 
-Alternatively, download the (latest stable) developer version of the container on dockerhub run on your terminal these commands:
+Alternatively, to download the (latest stable) developer version of the container from [dockerhub](https://hub.docker.com/r/carlosantagiustina/odycceus-cocalc), run on your terminal these commands:
 ```
 docker pull carlosantagiustina/odycceus-cocalc:dev
 ```
