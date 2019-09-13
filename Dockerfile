@@ -44,7 +44,8 @@ RUN \
         libczmq-dev \
          wget \
         software-properties-common \
-        python3-venv
+        python3-venv \
+        pandoc-citeproc
 #        ruby \
 #        ruby-dev \        
 
