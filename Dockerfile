@@ -237,7 +237,7 @@ RUN \
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
 RUN \ 
-R -e 'install.packages(c("devtools","JuliaCall","rmdformats","bookdown","readtext","webshot","pageviews","knitr","DT","feather","tidyverse","swagger","reticulate","pillar","biomaRt","formatR", "rmarkdown","shiny","plumber","ckanr"),lib="/usr/lib/R/library")'
+R -e 'install.packages(c("devtools","rticles","JuliaCall","rmdformats","bookdown","readtext","webshot","pageviews","knitr","DT","feather","tidyverse","swagger","reticulate","pillar","biomaRt","formatR", "rmarkdown","shiny","plumber","ckanr"),lib="/usr/lib/R/library")'
 
  RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
