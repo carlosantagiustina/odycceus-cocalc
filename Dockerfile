@@ -236,7 +236,12 @@ RUN \
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
 RUN \ 
-R -e 'install.packages(c("IRKernel","JuliaCall","rmdformats","bookdown","readtext","rjava","webshot","pageviews","knitr","DT","feather","tidyverse","swagger","reticulate","pillar","biomaRt","formatR", "rmarkdown","shiny","plumber","ckanr"),lib="/usr/lib/R/library")'
+R -e 'install.packages(c("devtools","JuliaCall","rmdformats","bookdown","readtext","webshot","pageviews","knitr","DT","feather","tidyverse","swagger","reticulate","pillar","biomaRt","formatR", "rmarkdown","shiny","plumber","ckanr"),lib="/usr/lib/R/library")'
+
+ RUN \ 
+    R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
+ RUN \ 
+    R -e 'devtools::install_github("s-u/rJava",lib="/usr/lib/R/library")'
 
 RUN \
 R -e 'webshot::install_phantomjs()'
@@ -285,8 +290,7 @@ R -e 'install.packages(c("curl","RCurl","rjson","rvest","httr","jsonlite","retwe
 #for SoS tutorials
 #sudo R -e 'devtools::install_github("grimbough/biomaRt")'
 
-# RUN \ 
-#    R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
+
 
 ######################################################################################################################
 ####################################
