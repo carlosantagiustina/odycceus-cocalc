@@ -236,8 +236,8 @@ RUN \
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
 
-RUN \ 
-    R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
+# RUN \ 
+#    R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
 
 ######################################################################################################################
 ####################################
@@ -268,20 +268,20 @@ RUN \
 
 #install reticulate, tensorflow and keras
 
-RUN \ 
-     R -e 'install.packages(c("reticulate"),lib="/usr/lib/R/library")'
-RUN \ 
-     R -e 'reticulate::virtualenv_create("py3-virtualenv", python = "/usr/bin/python3")'
-RUN \ 
-     R -e 'reticulate::use_virtualenv("py3-virtualenv")'
-RUN \ 
-     R -e 'devtools::install_github("rstudio/tensorflow")'
-RUN \ 
-      R -e 'tensorflow::install_tensorflow(method ="virtualenv", envname = "py3-virtualenv")'
-RUN \ 
-     R -e 'devtools::install_github("rstudio/keras")'
-RUN \ 
-      R -e 'keras::install_keras(method ="virtualenv", envname = "py3-virtualenv")'
+# RUN \ 
+#     R -e 'install.packages(c("reticulate"),lib="/usr/lib/R/library")'
+#RUN \ 
+#     R -e 'reticulate::virtualenv_create("py3-virtualenv", python = "/usr/bin/python3")'
+#RUN \ 
+#     R -e 'reticulate::use_virtualenv("py3-virtualenv")'
+#RUN \ 
+#     R -e 'devtools::install_github("rstudio/tensorflow")'
+#RUN \ 
+#      R -e 'tensorflow::install_tensorflow(method ="virtualenv", envname = "py3-virtualenv")'
+#RUN \ 
+#     R -e 'devtools::install_github("rstudio/keras")'
+#RUN \ 
+#      R -e 'keras::install_keras(method ="virtualenv", envname = "py3-virtualenv")'
 
 ################
 ### Julia     ##
