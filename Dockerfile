@@ -282,7 +282,7 @@ R -e 'install.packages(c("igraph","listviewer","cesium","plotly","r2d3","ggplot2
 
 #API REQUESTS AND WEB SCRAPING
 RUN \  
-R -e 'install.packages(c("curl","RCurl","rjson","rvest","httr","jsonlite","retweet","plotly","r2d3","udpipe","ggplot2","leaflet","visNetwork","swagger"),lib="/usr/lib/R/library")'
+R -e 'install.packages(c("curl","RCurl","rjson","rvest","httr","jsonlite","rtweet","plotly","r2d3","udpipe","ggplot2","leaflet","visNetwork","swagger"),lib="/usr/lib/R/library")'
 
 
 
