@@ -251,30 +251,30 @@ R -e 'webshot::install_phantomjs()'
 #TEXT MINING, NLP AND MODELLING
 RUN \ 
 R -e 'install.packages(c("text2vec","tidytext","udpipe","syuzhet","stm","lda","openNLP", "quanteda","spacyr", "tm","NLP","RWeka","koRpus"),lib="/usr/lib/R/library")'
-RUN \ 
-R -e 'install.packages("openNLPmodels.en",
-                 repos = "http://datacube.wu.ac.at/",
-                 type = "source",lib="/usr/lib/R/library")'
-RUN \ 
-R -e 'install.packages("openNLPmodels.it",
-                 repos = "http://datacube.wu.ac.at/",
-                 type = "source",lib="/usr/lib/R/library")'
-RUN \ 
-R -e 'install.packages("openNLPmodels.de",
-                 repos = "http://datacube.wu.ac.at/",
-                 type = "source",lib="/usr/lib/R/library")'
-RUN \ 
-R -e 'install.packages("StanfordCoreNLP",
-                 repos = "http://datacube.wu.ac.at/",
-                 type = "source",lib="/usr/lib/R/library")'
-RUN \ 
-R -e 'install.packages("tm.lexicon.GeneralInquirer",
-                 repos = "http://datacube.wu.ac.at/",
-                 type = "source",lib="/usr/lib/R/library")'
-RUN \ 
-R -e 'install.packages("riwordnet",
-                 repos = "http://datacube.wu.ac.at/",
-                 type = "source",lib="/usr/lib/R/library")'
+#RUN \ 
+#R -e 'install.packages("openNLPmodels.en",
+#                 repos = "http://datacube.wu.ac.at/",
+#                 type = "source",lib="/usr/lib/R/library")'
+#RUN \ 
+#R -e 'install.packages("openNLPmodels.it",
+#                 repos = "http://datacube.wu.ac.at/",
+#                 type = "source",lib="/usr/lib/R/library")'
+#RUN \ 
+#R -e 'install.packages("openNLPmodels.de",
+#                 repos = "http://datacube.wu.ac.at/",
+#                 type = "source",lib="/usr/lib/R/library")'
+#RUN \ 
+#R -e 'install.packages("StanfordCoreNLP",
+#                 repos = "http://datacube.wu.ac.at/",
+#                 type = "source",lib="/usr/lib/R/library")'
+#RUN \ 
+#R -e 'install.packages("tm.lexicon.GeneralInquirer",
+#                 repos = "http://datacube.wu.ac.at/",
+#                 type = "source",lib="/usr/lib/R/library")'
+#RUN \ 
+#R -e 'install.packages("riwordnet",
+#                 repos = "http://datacube.wu.ac.at/",
+#                 type = "source",lib="/usr/lib/R/library")'
 #VISUALIZATION
 
 RUN \ 
