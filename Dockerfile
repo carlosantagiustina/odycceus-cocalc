@@ -235,6 +235,55 @@ RUN \
     R -e 'update.packages(lib.loc = "/usr/lib/R/library", ask = FALSE, checkBuilt = TRUE)'
 RUN \ 
     R -e 'install.packages(c("units","ps","processx","fs","usethis","sf","cartography"),lib="/usr/lib/R/library")'
+RUN \ 
+R -e 'install.packages(c("IRKernel","JuliaCall","rmdformats","bookdown","readtext","rjava","webshot","pageviews","knitr","DT","feather","tidyverse","swagger","reticulate","pillar","biomaRt","formatR", "rmarkdown","shiny","plumber","ckanr"),lib="/usr/lib/R/library")'
+
+RUN \
+R -e 'webshot::install_phantomjs()'
+
+#TEXT MINING, NLP AND MODELLING
+RUN \ 
+R -e 'install.packages(c("text2vec","tidytext","udpipe","syuzhet","stm","lda","openNLP", "quanteda","spacyr", "tm","NLP","RWeka","koRpus"),lib="/usr/lib/R/library")'
+RUN \ 
+R -e 'install.packages("openNLPmodels.en",
+                 repos = "http://datacube.wu.ac.at/",
+                 type = "source")'
+RUN \ 
+R -e 'install.packages("openNLPmodels.it",
+                 repos = "http://datacube.wu.ac.at/",
+                 type = "source")'
+RUN \ 
+R -e 'install.packages("openNLPmodels.de",
+                 repos = "http://datacube.wu.ac.at/",
+                 type = "source")'
+RUN \ 
+R -e 'install.packages("StanfordCoreNLP",
+                 repos = "http://datacube.wu.ac.at/",
+                 type = "source")'
+RUN \ 
+R -e 'install.packages("tm.lexicon.GeneralInquirer",
+                 repos = "http://datacube.wu.ac.at/",
+                 type = "source")'
+RUN \ 
+R -e 'install.packages("riwordnet",
+                 repos = "http://datacube.wu.ac.at/",
+                 type = "source")'
+#VISUALIZATION
+
+RUN \ 
+R -e 'install.packages(c("igraph","listviewer","cesium","plotly","r2d3","ggplot2","leaflet","visNetwork","igraph"),lib="/usr/lib/R/library")'
+
+
+
+#API REQUESTS AND WEB SCRAPING
+RUN \  
+R -e 'install.packages(c("curl","RCurl","rjson","rvest","httr","jsonlite","retweet","plotly","r2d3","udpipe","ggplot2","leaflet","visNetwork","swagger"),lib="/usr/lib/R/library")'
+
+
+
+
+#for SoS tutorials
+#sudo R -e 'devtools::install_github("grimbough/biomaRt")'
 
 # RUN \ 
 #    R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
