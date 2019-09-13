@@ -241,7 +241,7 @@ R -e 'install.packages(c("devtools","JuliaCall","rmdformats","bookdown","readtex
  RUN \ 
     R -e 'devtools::install_github("IRkernel/IRkernel",lib="/usr/lib/R/library")'
  RUN \ 
-    R -e 'devtools::install_github("s-u/rJava",lib="/usr/lib/R/library")'
+    R -e 'install.packages(c("rJava"),lib="/usr/lib/R/library")'
 
 RUN \
 R -e 'webshot::install_phantomjs()'
