@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 #RUN rm /etc/apt/sources.list.d/vscode.list; 
 #RUN rm /etc/apt/trusted.gpg.d/microsoft.gpg /microsoft.gpg
 
-
+RUN apt-get update && apt-get install -y gnupg gnupg1 gnupg2
 
 #repostiries 
 RUN wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -
