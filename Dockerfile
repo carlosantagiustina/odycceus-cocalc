@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 
 #repostiries 
-RUN wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+RUN wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 
 # Install additional software
@@ -54,8 +54,8 @@ RUN octave --eval 'pkg install -forge dataframe'
 #########   Chrome     #########
 ################################
 
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
 RUN  apt-get update 
 RUN  apt-get install -y  google-chrome-stable
 
