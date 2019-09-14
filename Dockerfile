@@ -290,7 +290,7 @@ R -e 'install.packages(c("curl","RCurl","rjson","rvest","httr","jsonlite","rtwee
 
 
 #for SoS tutorials
-#sudo R -e 'devtools::install_github("grimbough/biomaRt")'
+# R -e 'devtools::install_github("grimbough/biomaRt")'
 
 
 
