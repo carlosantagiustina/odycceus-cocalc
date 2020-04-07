@@ -26,7 +26,6 @@ RUN \
         scilab \
         geogebra \
         sqlitebrowser \
-        default-jdk \
         nano \
         apt-transport-https \
         software-properties-common \
