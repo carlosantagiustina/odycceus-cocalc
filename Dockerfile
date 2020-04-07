@@ -26,8 +26,6 @@ RUN \
         scilab \
         geogebra \
         sqlitebrowser \
-        mysql-workbench \
-        gmysqlcc \
         default-jdk \
         nano \
         apt-transport-https \
