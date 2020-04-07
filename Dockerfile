@@ -33,9 +33,7 @@ RUN \
         apt-transport-https \
         software-properties-common \
         sbcl \
-        unrar \
         idle3 \
-        firefox \
         atom \
         libtool \
         libffi-dev \
